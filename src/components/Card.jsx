@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import './Card.css'
 
 const POKEMON_CARD_URL = 'https://pokeapi.co/api/v2/pokemon'
@@ -6,9 +6,6 @@ const POKEMON_CARD_URL = 'https://pokeapi.co/api/v2/pokemon'
 // getPokemon('bulbasaur')
 function Card () {
   const [imageURL, setImageURL] = useState('')
-
-  useEffect(() => {
-  }, [])
 
   return (
     <div className=''>
