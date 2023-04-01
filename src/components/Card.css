@@ -1,3 +1,8 @@
+.Card {
+    display: flex;
+    flex-direction: column;
+}
+
 .Pokemon_Name {
     font-size: 2rem;
 }
