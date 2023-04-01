@@ -1,0 +1,20 @@
+.Card {
+    display: flex;
+    flex-direction: column;
+}
+
+.Pokemon_Name {
+    font-size: 2rem;
+}
+
+.Pokemon_Type {
+    font-size: 1.2rem;
+}
+
+.Pokemon_Moves {
+    font-size: 1.2rem;
+}
+
+.Pokemon_Stats {
+    font-size: 1.2rem;
+}
