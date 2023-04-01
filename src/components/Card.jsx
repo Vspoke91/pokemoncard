@@ -11,6 +11,7 @@ function Card () {
     <div className='Card'>
       <p className='Pokemon_Name'>Pokemon Name</p>
       <p className='Pokemon_Type'>Type</p>
+      <p className='Pokemon_Moves'>Moves</p>
 
       <button onClick={() => getPokemonImage('clefairy', setImageURL)}>Get New Card</button>
       <img src={imageURL} />
