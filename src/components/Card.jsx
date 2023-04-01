@@ -9,7 +9,7 @@ function Card () {
 
   return (
     <div className='Card'>
-      <p>Pokemon Name</p>
+      <p className='Pokemon_Name'>Pokemon Name</p>
 
       <button onClick={() => getPokemonImage('clefairy', setImageURL)}>Get New Card</button>
       <img src={imageURL} />
