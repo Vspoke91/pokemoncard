@@ -9,7 +9,7 @@ function Card () {
 
   return (
     <div className=''>
-      <button onClick={() => getPokemonImage('bulbasaur', setImageURL)}>Test</button>
+      <button onClick={() => getPokemonImage('bulbasaur', setImageURL)}>Get New Card</button>
       <img src={imageURL} />
     </div>
   )
