@@ -15,14 +15,14 @@ function Card () {
   )
 }
 
-function getPokemonImage (pokemonName, setState) {
+function getPokemonImage (pokemonName, setImageURL) {
   fetch(`${POKEMON_CARD_URL}/${pokemonName}`)
     .then((res) => res.json())
     .then((json) => json.sprites)
     .then((sprites) => sprites.other)
     .then((other) => other.dream_world)
     .then((dreamWorld) => {
-      setState(dreamWorld.front_default)
+      setImageURL(dreamWorld.front_default)
     })
 }
 export default Card
