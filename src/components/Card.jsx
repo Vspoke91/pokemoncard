@@ -8,8 +8,10 @@ function Card () {
   const [imageURL, setImageURL] = useState('')
 
   return (
-    <div className=''>
-      <button onClick={() => getPokemonImage('bulbasaur', setImageURL)}>Get New Card</button>
+    <div className='Card'>
+      <p>Pokemon Name</p>
+
+      <button onClick={() => getPokemonImage('clefairy', setImageURL)}>Get New Card</button>
       <img src={imageURL} />
     </div>
   )
