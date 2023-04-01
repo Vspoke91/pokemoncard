@@ -10,6 +10,7 @@ function Card () {
   return (
     <div className='Card'>
       <p className='Pokemon_Name'>Pokemon Name</p>
+      <p className='Pokemon_Type'>Type</p>
 
       <button onClick={() => getPokemonImage('clefairy', setImageURL)}>Get New Card</button>
       <img src={imageURL} />
