@@ -5,36 +5,97 @@ const POKEMON_CARD_URL = 'https://pokeapi.co/api/v2/pokemon'
 
 // getPokemon('bulbasaur')
 function Card () {
-  const [imageURL, setImageURL] = useState('')
+  const [pokeImgURL, setPokeImgURL] = useState('')
+  const [pokeTypes, setPokeTypes] = useState([])
+  const [pokeAbilities, setPokeAbilities] = useState([])
+  const [pokeMoves, setPokeMoves] = useState([])
+  const [pokeStats, setPokeStats] = useState([])
+  const [pokeName, setPokeName] = useState('Name')
 
+  function getNewCard () {
+    const pokemon = Math.floor(Math.random() * 649) + 1
+    getPokemonImage(pokemon, setPokeImgURL)
+    getPokemonTypes(pokemon, setPokeTypes)
+    getPokemonAbilities(pokemon, setPokeAbilities)
+    getPokemonMoves(pokemon, setPokeMoves)
+    getPokemonStats(pokemon, setPokeStats)
+    getPokemonName(pokemon, setPokeName)
+  }
+  // {
   return (
     <div className='Card'>
-      <p className='Pokemon_Name'>Pokemon Name</p>
-      <p className='Pokemon_Type'>Type</p>
-      <img src={imageURL} />
-      <div className='Pokemon_Abilities'>Abilities</div>
-      <div className='Pokemon_Moves'>Moves</div>
-      <div className='Pokemon_Stats'>
-        <p className='Stat_HP'>hp</p>
-        <p className='Stat_Attack'>attack</p>
-        <p className='Stat_Defence'>defence</p>
-        <p className='Stat_Specia-Attack'>special-attack</p>
-        <p className='Stat_Special-defence'>special-defense</p>
-        <p className='Stat_Speed'>speed</p>
+      <p className='Pokemon_Name'>{pokeName}</p>
+      <div className='Pokemon_Type'>
+        Type
+        {
+          pokeTypes.length &&
+          pokeTypes.map((type, index) =>
+            <p key={index}>{type.type.name}</p>
+          )
+        }
       </div>
-      <button onClick={() => getPokemonImage('clefairy', setImageURL)}>Get New Card</button>
+      <img src={pokeImgURL} height='100px' width='100px' />
+      <div className='Pokemon_Abilities'>
+        Abilities
+        {
+          pokeAbilities.length &&
+          pokeAbilities.map((ability, index) =>
+            <p key={index}>{ability.ability.name}</p>
+          )
+        }
+      </div>
+      <div className='Pokemon_Moves'>
+        Moves
+        {
+          pokeMoves.length &&
+          pokeMoves.slice(0, 5).map((move, index) =>
+            <p key={index}>{move.move.name}</p>
+          )
+        }
+      </div>
+      <div className='Pokemon_Stats'>
+        {
+          pokeStats.length &&
+          pokeStats.map((stat, index) =>
+            <p key={index}>{stat.stat.name} - {stat.base_stat}</p>
+          )
+        }
+      </div>
+      <button onClick={() => getNewCard()}>Get New Card</button>
     </div>
   )
 }
 
-function getPokemonImage (pokemonName, setImageURL) {
+function getPokemonImage (pokemonName, setState) {
   fetch(`${POKEMON_CARD_URL}/${pokemonName}`)
     .then((res) => res.json())
-    .then((json) => json.sprites)
-    .then((sprites) => sprites.other)
-    .then((other) => other.dream_world)
-    .then((dreamWorld) => {
-      setImageURL(dreamWorld.front_default)
-    })
+    .then((json) => setState(json.sprites.other.dream_world.front_default))
+}
+
+function getPokemonTypes (pokemonName, setState) {
+  fetch(`${POKEMON_CARD_URL}/${pokemonName}`)
+    .then((res) => res.json())
+    .then((json) => setState(json.types))
+}
+
+function getPokemonAbilities (pokemonName, setState) {
+  fetch(`${POKEMON_CARD_URL}/${pokemonName}`)
+    .then((res) => res.json())
+    .then((json) => setState(json.abilities))
+}
+function getPokemonMoves (pokemonName, setState) {
+  fetch(`${POKEMON_CARD_URL}/${pokemonName}`)
+    .then((res) => res.json())
+    .then((json) => setState(json.moves))
+}
+function getPokemonStats (pokemonName, setState) {
+  fetch(`${POKEMON_CARD_URL}/${pokemonName}`)
+    .then((res) => res.json())
+    .then((json) => setState(json.stats))
+}
+function getPokemonName (pokemonName, setState) {
+  fetch(`${POKEMON_CARD_URL}/${pokemonName}`)
+    .then((res) => res.json())
+    .then((json) => setState(json.name))
 }
 export default Card
