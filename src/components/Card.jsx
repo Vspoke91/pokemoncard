@@ -28,42 +28,42 @@ function Card () {
         <h1 className='Pokemon_Name'>{pokeName}</h1>
         <div className='Pokemon_Type'>
           <h1>Type</h1>
-          {
-            pokeTypes.length &&
-            pokeTypes.map((type, index) =>
-              <p key={index}>{type.type.name}</p>
-            )
-         }
+          <ul>
+            {pokeTypes.length &&
+              pokeTypes.map((type, index) =>
+                <li key={index}>{type.type.name}</li>
+              )}
+          </ul>
         </div>
         <img className='Pokemon_Img' src={pokeImgURL} />
         <div className='Pokemon_Abilities'>
           <h1>Abilitites</h1>
-          {
-            pokeAbilities.length &&
-            pokeAbilities.map((ability, index) =>
-              <p key={index}>{ability.ability.name}</p>
-            )
-          }
+          <ul>
+            {pokeAbilities.length &&
+              pokeAbilities.map((ability, index) =>
+                <li key={index}>{ability.ability.name}</li>
+              )}
+          </ul>
         </div>
         <div className='Pokemon_Stats'>
           <h1>Stats</h1>
-          {
-            pokeStats.length &&
-            pokeStats.map((stat, index) =>
-              <p key={index}>{stat.stat.name} - {stat.base_stat}</p>
-            )
-          }
+          <ul>
+            {pokeStats.length &&
+              pokeStats.map((stat, index) =>
+                <li key={index}>{stat.stat.name} - {stat.base_stat}</li>
+              )}
+          </ul>
         </div>
       </div>
 
       <div className='Pokemon_Moves'>
         <h1>Moves</h1>
-        {
-            pokeMoves.length &&
+        <ul>
+          {pokeMoves.length &&
             pokeMoves.slice(0, 5).map((move, index) =>
-              <p key={index}>{move.move.name}</p>
-            )
-          }
+              <li key={index}>{move.move.name}</li>
+            )}
+        </ul>
       </div>
       <button className='Get_Pokemon_Button' onClick={() => getNewCard()}>Get Next Card</button>
     </div>
