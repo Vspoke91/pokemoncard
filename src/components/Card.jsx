@@ -12,7 +12,7 @@ function Card () {
   const [pokeStats, setPokeStats] = useState([])
 
   function getNewCard () {
-    const pokemon = 'clefairy' // TODO: change this to a random id
+    const pokemon = Math.floor(Math.random() * 649) + 1// TODO: change this to a random id
     getPokemonImage(pokemon, setPokeImgURL)
     getPokemonType(pokemon, setPokeType)// TODO: type is an erray make it so it displays an erra in DOM
     getPokemonAbilities(pokemon, setPokeAbilities)
