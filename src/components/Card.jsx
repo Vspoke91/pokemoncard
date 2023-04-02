@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './Card.css'
 
 const POKEMON_CARD_URL = 'https://pokeapi.co/api/v2/pokemon'
@@ -22,12 +22,15 @@ function Card () {
     getPokemonName(pokemon, setPokeName)
   }
 
+  useEffect(() => getNewCard(), [])
+
   return (
     <div className='Card'>
       <div className='Main_Card'>
         <h1 className='Pokemon_Name'>{pokeName}</h1>
+
         <div className='Pokemon_Type'>
-          <h1>Type</h1>
+          <h1>Type:</h1>
           <ul>
             {pokeTypes.length &&
               pokeTypes.map((type, index) =>
@@ -35,9 +38,11 @@ function Card () {
               )}
           </ul>
         </div>
+
         <img className='Pokemon_Img' src={pokeImgURL} />
+
         <div className='Pokemon_Abilities'>
-          <h1>Abilitites</h1>
+          <h1>Abilitites:</h1>
           <ul>
             {pokeAbilities.length &&
               pokeAbilities.map((ability, index) =>
@@ -50,7 +55,7 @@ function Card () {
           <ul>
             {pokeStats.length &&
               pokeStats.map((stat, index) =>
-                <li key={index}>{stat.stat.name} - {stat.base_stat}</li>
+                <li key={index}><p className='stat_name'>{stat.stat.name}</p><p className='stat_number'>{stat.base_stat}</p></li>
               )}
           </ul>
         </div>
@@ -60,16 +65,16 @@ function Card () {
         <h1>Moves</h1>
         <ul>
           {pokeMoves.length &&
-            pokeMoves.slice(0, 5).map((move, index) =>
+            pokeMoves.map((move, index) =>
               <li key={index}>{move.move.name}</li>
             )}
         </ul>
       </div>
-      <button className='Get_Pokemon_Button' onClick={() => getNewCard()}>Get Next Card</button>
     </div>
   )
 }
 
+// <button className='Get_Pokemon_Button' onClick={() => getNewCard()}>Get Next Card</button>
 function getPokemonImage (pokemonName, setState) {
   fetch(`${POKEMON_CARD_URL}/${pokemonName}`)
     .then((res) => res.json())
