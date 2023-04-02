@@ -10,6 +10,7 @@ function Card () {
   const [pokeAbilities, setPokeAbilities] = useState([])
   const [pokeMoves, setPokeMoves] = useState([])
   const [pokeStats, setPokeStats] = useState([])
+  const [pokeName, setPokeName] = useState('Name')
 
   function getNewCard () {
     const pokemon = Math.floor(Math.random() * 649) + 1// TODO: change this to a random id
@@ -18,11 +19,12 @@ function Card () {
     getPokemonAbilities(pokemon, setPokeAbilities)
     getPokemonMoves(pokemon, setPokeMoves)
     getPokemonStats(pokemon, setPokeStats)
+    getPokemonName(pokemon, setPokeName)
   }
   // {
   return (
     <div className='Card'>
-      <p className='Pokemon_Name'>Pokemon Name</p>
+      <p className='Pokemon_Name'>{pokeName}</p>
       <p className='Pokemon_Type'>Type {pokeType}</p>
       <img src={pokeImgURL} height='100px' width='100px' />
       <div className='Pokemon_Abilities'>
@@ -82,5 +84,10 @@ function getPokemonStats (pokemonName, setState) {
   fetch(`${POKEMON_CARD_URL}/${pokemonName}`)
     .then((res) => res.json())
     .then((json) => setState(json.stats))
+}
+function getPokemonName (pokemonName, setState) {
+  fetch(`${POKEMON_CARD_URL}/${pokemonName}`)
+    .then((res) => res.json())
+    .then((json) => setState(json.name))
 }
 export default Card
