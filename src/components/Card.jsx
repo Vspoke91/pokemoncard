@@ -6,16 +6,16 @@ const POKEMON_CARD_URL = 'https://pokeapi.co/api/v2/pokemon'
 // getPokemon('bulbasaur')
 function Card () {
   const [pokeImgURL, setPokeImgURL] = useState('')
-  const [pokeType, setPokeType] = useState('')
+  const [pokeTypes, setPokeTypes] = useState([])
   const [pokeAbilities, setPokeAbilities] = useState([])
   const [pokeMoves, setPokeMoves] = useState([])
   const [pokeStats, setPokeStats] = useState([])
   const [pokeName, setPokeName] = useState('Name')
 
   function getNewCard () {
-    const pokemon = Math.floor(Math.random() * 649) + 1// TODO: change this to a random id
+    const pokemon = Math.floor(Math.random() * 649) + 1
     getPokemonImage(pokemon, setPokeImgURL)
-    getPokemonType(pokemon, setPokeType)// TODO: type is an erray make it so it displays an erra in DOM
+    getPokemonTypes(pokemon, setPokeTypes)
     getPokemonAbilities(pokemon, setPokeAbilities)
     getPokemonMoves(pokemon, setPokeMoves)
     getPokemonStats(pokemon, setPokeStats)
@@ -25,7 +25,15 @@ function Card () {
   return (
     <div className='Card'>
       <p className='Pokemon_Name'>{pokeName}</p>
-      <p className='Pokemon_Type'>Type {pokeType}</p>
+      <div className='Pokemon_Type'>
+        Type
+        {
+          pokeTypes.length &&
+          pokeTypes.map((type, index) =>
+            <p key={index}>{type.type.name}</p>
+          )
+        }
+      </div>
       <img src={pokeImgURL} height='100px' width='100px' />
       <div className='Pokemon_Abilities'>
         Abilities
@@ -64,10 +72,10 @@ function getPokemonImage (pokemonName, setState) {
     .then((json) => setState(json.sprites.other.dream_world.front_default))
 }
 
-function getPokemonType (pokemonName, setState) {
+function getPokemonTypes (pokemonName, setState) {
   fetch(`${POKEMON_CARD_URL}/${pokemonName}`)
     .then((res) => res.json())
-    .then((json) => setState(json.types[0].type.name))
+    .then((json) => setState(json.types))
 }
 
 function getPokemonAbilities (pokemonName, setState) {
