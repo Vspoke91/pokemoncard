@@ -18,3 +18,8 @@
 .Pokemon_Stats {
     font-size: 1.2rem;
 }
+
+.Pokemon_Img {
+    height: 200px;
+    width: 200px;
+}

@@ -26,7 +26,7 @@ function Card () {
     <div className='Card'>
       <p className='Pokemon_Name'>{pokeName}</p>
       <div className='Pokemon_Type'>
-        Type
+        <h1>Type</h1>
         {
           pokeTypes.length &&
           pokeTypes.map((type, index) =>
@@ -34,9 +34,9 @@ function Card () {
           )
         }
       </div>
-      <img src={pokeImgURL} height='100px' width='100px' />
+      <img className='Pokemon_Img' src={pokeImgURL} />
       <div className='Pokemon_Abilities'>
-        Abilities
+        <h1>Abilitites</h1>
         {
           pokeAbilities.length &&
           pokeAbilities.map((ability, index) =>
@@ -45,7 +45,7 @@ function Card () {
         }
       </div>
       <div className='Pokemon_Moves'>
-        Moves
+        <h1>Moves</h1>
         {
           pokeMoves.length &&
           pokeMoves.slice(0, 5).map((move, index) =>
@@ -54,6 +54,7 @@ function Card () {
         }
       </div>
       <div className='Pokemon_Stats'>
+        <h1>Stats</h1>
         {
           pokeStats.length &&
           pokeStats.map((stat, index) =>
@@ -61,7 +62,7 @@ function Card () {
           )
         }
       </div>
-      <button onClick={() => getNewCard()}>Get New Card</button>
+      <button className='Get_Pokemon_Button' onClick={() => getNewCard()}>Get Next Card</button>
     </div>
   )
 }
@@ -98,4 +99,5 @@ function getPokemonName (pokemonName, setState) {
     .then((res) => res.json())
     .then((json) => setState(json.name))
 }
+
 export default Card
