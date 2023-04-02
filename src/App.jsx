@@ -33,11 +33,13 @@ function App () {
         pokeStats={pokeStats}
         pokeName={pokeName}
       />
+      <div className='Nav_Buttons'>
+        <button className='Save_Pokemon_Button' onClick={() => getNewCard()}>Save Card</button>
+        <button className='Get_Pokemon_Button' onClick={() => getNewCard()}>Get Next Card</button>
+      </div>
     </div>
   )
 }
-
-// <button className='Get_Pokemon_Button' onClick={() => getNewCard()}>Get Next Card</button>
 function getPokemonImage (pokemonName, setState) {
   fetch(`${POKEMON_CARD_URL}/${pokemonName}`)
     .then((res) => res.json())
