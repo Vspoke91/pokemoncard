@@ -1,13 +1,8 @@
-#root {
-    background-color: #3a3a3a;
-}
-
 .Card {
     display: flex;
-
     background-color: rgb(220, 230, 239);
 
-    width: clamp(0px, 100vw, 600px);
+    width: inherit;
     height: 500px;
 }
 
@@ -71,7 +66,7 @@
 
 .Pokemon_Abilities h1 {
     font-size: 1rem;
-    font-weight: 500;
+    font-weight: 600;
 }
 
 .Pokemon_Abilities ul {
@@ -137,6 +132,7 @@
     flex: 0.6;
     align-items: center;
 
+    padding-top: 10px;
     font-size: 1.2rem;
     height: inherit;
     overflow-y: auto;
@@ -145,7 +141,7 @@
 }
 
 .Pokemon_Moves h1 {
-    font-size: 1.5rem;
+    font-size: 1.1rem;
     font-weight: 700;
 }
 
@@ -166,6 +162,6 @@
 
     padding: 5px;
     margin: 1px;
-    background-color: #a3cbff;
-    border-radius: 10px;
+    background-color: #b2d0f8;
+    border-radius: 5px;
 }
