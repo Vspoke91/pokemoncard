@@ -28,6 +28,7 @@ function Card ({ pokeName, pokeTypes, pokeImgURL, pokeAbilities, pokeStats, poke
               )}
           </ul>
         </div>
+
         <div className='Pokemon_Stats'>
           <h1>Stats</h1>
           <ul>

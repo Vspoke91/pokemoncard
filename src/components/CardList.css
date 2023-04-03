@@ -9,13 +9,16 @@
     width: inherit;
 }
 
-.CardList h1 {
+.CardList_Tittle {
     font-size: 1.5rem;
+    width: 100%;
+    text-align: center;
+    background-color: rgb(210, 219, 227);
 }
 
 .CardList ul {
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
     width: inherit;
 
     list-style-type: none;
@@ -23,13 +26,17 @@
 
 .CardList li {
     display: flex;
-
+    cursor: pointer;
     align-items: center;
 
     width: inherit;
     border-top: 2px solid rgb(193, 193, 193);
 
     list-style-type: none;
+}
+
+.CardList ul :hover {
+    background-color: rgb(193, 202, 210);
 }
 
 .CardList img {

@@ -59,7 +59,7 @@ function App () {
         <button className='Get_Pokemon_Button' onClick={() => getNewCard(getRandomID())}>Get Next Card</button>
       </div>
 
-      <CardList savedCards={savedCards} getPokemonImage={getPokemonImage} />
+      <CardList savedCards={savedCards} getNewCard={getNewCard} />
     </div>
   )
 }
