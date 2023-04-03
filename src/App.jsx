@@ -60,6 +60,7 @@ function App () {
       </div>
 
       <CardList savedCards={savedCards} getNewCard={getNewCard} />
+
     </div>
   )
 }
@@ -79,7 +80,6 @@ function getPokemonTypes (pokemonName, setState) {
     .then((res) => res.json())
     .then((json) => setState(json.types))
 }
-
 function getPokemonAbilities (pokemonName, setState) {
   fetch(`${POKEMON_CARD_URL}/${pokemonName}`)
     .then((res) => res.json())

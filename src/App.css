@@ -4,14 +4,14 @@
 }
 
 .App {
-  width: clamp(0px, 100vw, 600px);
-
-  margin: 20px auto;
-
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  width: clamp(0px, 100vw, 600px);
+
+  margin: 20px auto;
 }
 
 .App .App_Tittle {

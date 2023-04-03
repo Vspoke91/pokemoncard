@@ -3,8 +3,11 @@ import './CardList.css'
 function CardList ({ savedCards, getNewCard }) {
   return (
     <div className='CardList'>
+
       <h1 className='CardList_Tittle'>Saved Cards</h1>
+
       <ul>
+
         {savedCards.length > 0 &&
             savedCards.map((card, index) =>
               <li onClick={() => getNewCard(card.id)} key={index}>
