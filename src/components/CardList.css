@@ -1,0 +1,61 @@
+.CardList {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin-top: 10px;
+
+    background-color: rgb(220, 230, 239);
+    width: inherit;
+}
+
+.CardList h1 {
+    font-size: 1.5rem;
+}
+
+.CardList ul {
+    display: flex;
+    flex-direction: column;
+    width: inherit;
+
+    list-style-type: none;
+}
+
+.CardList li {
+    display: flex;
+
+    align-items: center;
+
+    width: inherit;
+    border-top: 2px solid rgb(193, 193, 193);
+
+    list-style-type: none;
+}
+
+.CardList img {
+    width: 100px;
+    padding: 20px;
+    height: auto
+}
+
+.CardList .Tittle {
+
+    width: 50%;
+    text-align: center;
+    flex-direction: column;
+}
+
+.CardList .Tittle h1 {
+    font-size: 2rem;
+}
+
+.CardList .Types {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding-top: 10px;
+}
+
+.CardList .Types p {
+    font-size: 1.8rem;
+}

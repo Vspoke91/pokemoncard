@@ -1,10 +1,13 @@
 import './App.css'
 import { useState, useEffect } from 'react'
 import Card from './components/Card'
+import CardList from './components/CardList'
 
 const POKEMON_CARD_URL = 'https://pokeapi.co/api/v2/pokemon'
 
 function App () {
+  const [currentPokemon, setCurrentPokemon] = useState(0)
+
   const [pokeImgURL, setPokeImgURL] = useState('')
   const [pokeTypes, setPokeTypes] = useState([])
   const [pokeAbilities, setPokeAbilities] = useState([])
@@ -12,8 +15,8 @@ function App () {
   const [pokeStats, setPokeStats] = useState([])
   const [pokeName, setPokeName] = useState('Name')
 
-  function getNewCard () {
-    const pokemon = Math.floor(Math.random() * 649) + 1
+  function getNewCard (pokemon) {
+    setCurrentPokemon(pokemon)
     getPokemonImage(pokemon, setPokeImgURL)
     getPokemonTypes(pokemon, setPokeTypes)
     getPokemonAbilities(pokemon, setPokeAbilities)
@@ -22,9 +25,26 @@ function App () {
     getPokemonName(pokemon, setPokeName)
   }
 
-  useEffect(() => getNewCard(), [])
+  const [savedCards, setSavedCards] = useState([])
+
+  function saveCard () {
+    if (!savedCards.some((card) => card.id === currentPokemon)) {
+      setSavedCards([...savedCards,
+        {
+          id: currentPokemon,
+          name: pokeName,
+          types: pokeTypes,
+          imgURL: pokeImgURL
+        }])
+    }
+  }
+
+  useEffect(() => getNewCard(getRandomID()), [])
+
   return (
     <div className='App'>
+      <h1 className='App_Tittle'>Pokemon Card</h1>
+
       <Card
         pokeImgURL={pokeImgURL}
         pokeTypes={pokeTypes}
@@ -33,13 +53,21 @@ function App () {
         pokeStats={pokeStats}
         pokeName={pokeName}
       />
+
       <div className='Nav_Buttons'>
-        <button className='Save_Pokemon_Button' onClick={() => getNewCard()}>Save Card</button>
-        <button className='Get_Pokemon_Button' onClick={() => getNewCard()}>Get Next Card</button>
+        <button className='Save_Pokemon_Button' onClick={() => saveCard()}>Save Card</button>
+        <button className='Get_Pokemon_Button' onClick={() => getNewCard(getRandomID())}>Get Next Card</button>
       </div>
+
+      <CardList savedCards={savedCards} getPokemonImage={getPokemonImage} />
     </div>
   )
 }
+
+function getRandomID () {
+  return Math.floor(Math.random() * 649) + 1
+}
+
 function getPokemonImage (pokemonName, setState) {
   fetch(`${POKEMON_CARD_URL}/${pokemonName}`)
     .then((res) => res.json())

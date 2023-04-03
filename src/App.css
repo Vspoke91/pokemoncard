@@ -5,9 +5,8 @@
 
 .App {
   width: clamp(0px, 100vw, 600px);
-  height: 100vh;
 
-  margin: auto;
+  margin: 20px auto;
 
   display: flex;
   flex-direction: column;
@@ -15,11 +14,19 @@
   justify-content: center;
 }
 
+.App .App_Tittle {
+  color: aliceblue;
+  margin: 10px;
+  font-size: 3rem;
+}
+
 .Nav_Buttons {
   display: flex;
   flex-direction: column;
   gap: 10px;
   align-items: center;
+
+  overflow: hidden;
 
   border-top: 2px solid rgb(193, 193, 193);
   padding: 10px 0px;
@@ -33,7 +40,7 @@
 .Nav_Buttons .Get_Pokemon_Button {
   height: inherit;
   font-size: 1.4rem;
-  width: clamp(200px, 50vw, 300px);
+  width: clamp(200px, 70vw, 300px);
 
   color: white;
   border: none;
